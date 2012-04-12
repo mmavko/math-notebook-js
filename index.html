@@ -1,0 +1,159 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org">
+
+<title>Math Notebook</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.angularjs.org/0.9.15/angular-0.9.15.min.js" ng:autobind></script>
+<script src="jquery.tooltip.js"></script>
+<script src="app.js"></script>
+
+<link rel="stylesheet" href="style.css">
+
+<script>
+
+initialExpressions = [
+  'a = 3/4*PI',
+  'sina = sin(a)',
+  'cosa = cos(a)',
+  'one = sina*sina + cosa*cosa'
+];
+
+constants = [{
+    "url": "jsref_e.asp",
+    "name": "E",
+    "desc": "Returns Euler's number (approx. 2.718)"
+}, {
+    "url": "jsref_ln2.asp",
+    "name": "LN2",
+    "desc": "Returns the natural logarithm of 2 (approx. 0.693)"
+}, {
+    "url": "jsref_ln10.asp",
+    "name": "LN10",
+    "desc": "Returns the natural logarithm of 10 (approx. 2.302)"
+}, {
+    "url": "jsref_log2e.asp",
+    "name": "LOG2E",
+    "desc": "Returns the base-2 logarithm of E (approx. 1.442)"
+}, {
+    "url": "jsref_log10e.asp",
+    "name": "LOG10E",
+    "desc": "Returns the base-10 logarithm of E (approx. 0.434)"
+}, {
+    "url": "jsref_pi.asp",
+    "name": "PI",
+    "desc": "Returns PI (approx. 3.14)"
+}, {
+    "url": "jsref_sqrt1_2.asp",
+    "name": "SQRT1_2",
+    "desc": "Returns the square root of 1/2 (approx. 0.707)"
+}, {
+    "url": "jsref_sqrt2.asp",
+    "name": "SQRT2",
+    "desc": "Returns the square root of 2 (approx. 1.414)"
+}];
+
+functions = [{
+    "url": "jsref_abs.asp",
+    "name": "abs(x)",
+    "desc": "Returns the absolute value of x"
+}, {
+    "url": "jsref_acos.asp",
+    "name": "acos(x)",
+    "desc": "Returns the arccosine of x, in radians"
+}, {
+    "url": "jsref_asin.asp",
+    "name": "asin(x)",
+    "desc": "Returns the arcsine of x, in radians"
+}, {
+    "url": "jsref_atan.asp",
+    "name": "atan(x)",
+    "desc": "Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians"
+}, {
+    "url": "jsref_atan2.asp",
+    "name": "atan2(y,x)",
+    "desc": "Returns the arctangent of the quotient of its arguments"
+}, {
+    "url": "jsref_ceil.asp",
+    "name": "ceil(x)",
+    "desc": "Returns x, rounded upwards to the nearest integer"
+}, {
+    "url": "jsref_cos.asp",
+    "name": "cos(x)",
+    "desc": "Returns the cosine of x (x is in radians)"
+}, {
+    "url": "jsref_exp.asp",
+    "name": "exp(x)",
+    "desc": "Returns the value of E<sup>x</sup>"
+}, {
+    "url": "jsref_floor.asp",
+    "name": "floor(x)",
+    "desc": "Returns x, rounded downwards to the nearest integer"
+}, {
+    "url": "jsref_log.asp",
+    "name": "log(x)",
+    "desc": "Returns the natural logarithm (base E) of x"
+}, {
+    "url": "jsref_max.asp",
+    "name": "max(x,y,z,...,n)",
+    "desc": "Returns the number with the highest value"
+}, {
+    "url": "jsref_min.asp",
+    "name": "min(x,y,z,...,n)",
+    "desc": "Returns the number with the lowest value"
+}, {
+    "url": "jsref_pow.asp",
+    "name": "pow(x,y)",
+    "desc": "Returns the value of x to the power of y"
+}, {
+    "url": "jsref_random.asp",
+    "name": "random()",
+    "desc": "Returns a random number between 0 and 1"
+}, {
+    "url": "jsref_round.asp",
+    "name": "round(x)",
+    "desc": "Rounds x to the nearest integer"
+}, {
+    "url": "jsref_sin.asp",
+    "name": "sin(x)",
+    "desc": "Returns the sine of x (x is in radians)"
+}, {
+    "url": "jsref_sqrt.asp",
+    "name": "sqrt(x)",
+    "desc": "Returns the square root of x"
+}, {
+    "url": "jsref_tan.asp",
+    "name": "tan(x)",
+    "desc": "Returns the tangent of an angle"
+}];
+
+</script>
+
+<div id="page">
+  
+  <div id="help" ng:controller="Help">
+    <h3>Constants</h3>
+    <div ng:repeat="const in constants">
+      <div><a ng:href="{{urlBase}}{{const.url}}" rel="tooltip" title="{{const.desc}}">{{const.name}}</a></div>
+    </div>
+    <h3>Functions</h3>
+    <div ng:repeat="func in functions">
+      <div><a ng:href="{{urlBase}}{{func.url}}" rel="tooltip" title="{{func.desc}}">{{func.name}}</a></div>
+    </div>
+  </div>
+
+  <h1>Math Notebook <br/><span>(JavaScript expressions evaluator)</span></h1>
+
+  <div id="exp-list" ng:controller="ExpList">
+    <ol>
+      <li ng:repeat="exp in expressions"><input name="exp.expression"> => <span ng:bind="exp.result" /></li>
+      <li class="placeholder"><input name="placeholder" ng:enterkeydown="addExpression()"/></li>
+    </ol>
+    <button ng:click="clear()" class="clear">clear</button>
+  </div>
+  
+  <footer>source: <a href="http://mmavko.github.com/">http://mmavko.github.com/</a></footer>
+
+</div>
+
+</html>

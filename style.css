@@ -1,0 +1,90 @@
+
+@import url(http://fonts.googleapis.com/css?family=Belleza);
+
+body {
+  background-color: Snow;
+  font-family: 'Belleza', sans-serif;
+}
+a {
+  color: DeepPink;
+}
+#page {
+  margin: 0 auto;
+  width: 900px;
+  color: MidnightBlue;
+}
+h1 {
+  margin: 40px 0 60px;
+  text-align: center;
+  font-weight: normal;
+}
+h1 span {
+  font-size: 70%;
+  color: #ccc;
+}
+#help {
+  float: left;
+  width: 250px;
+  border: 1px solid lightblue;
+  padding: 10px 30px 30px;
+  box-sizing: border-box;
+}
+#help h3 {
+  margin: 20px 0;
+}
+#help > div {
+  margin-left: 20px;
+  line-height: 22px;
+}
+#exp-list {
+  float: left;
+  width: 600px;
+  margin-left: 40px;
+  white-space: nowrap;
+}
+#exp-list ol {
+  margin: 0;
+  font: 16px/24px Monospace;
+}
+#exp-list input {
+  -webkit-appearance: none;
+  outline: none;
+  width: 400px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background: inherit;
+  font: inherit;
+}
+#exp-list button.clear {
+  -webkit-appearance: none;
+  border: none;
+  background: inherit;
+  font-size: 70%;
+  color: DeepPink;
+  text-decoration: underline;
+  cursor: pointer;
+  display: block;
+  margin: 16px 160px 0 0;
+  padding: 0;
+  float: right;
+}
+footer {
+  clear: both;
+  text-align: center;
+  padding: 40px 0 30px;
+}
+
+
+/* Tooltip */
+/* http://www.queness.com/post/92/create-a-simple-cssjavascript-tooltip-with-jquery */
+ 
+#tooltip {
+  position:absolute;
+  z-index:9999;
+  color:#fff;
+  width:160px;
+  background-color:rgba(0,0,0,0.6);
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 10px;
+}
